@@ -1,8 +1,14 @@
 
+import { Link } from 'react-router-dom'
 import RenderMovies from './Movies'
 
 export default function Menu(){
     return(
+    <>
+        <Link to={'/seats'}>
+            <button>to seats</button>
+        </Link>
+    
     <div className='container'>
         <h2>Selecione o filme</h2>
        
@@ -11,7 +17,7 @@ export default function Menu(){
             <RenderMovies />
         
     </div>
-
+</>
     )
 }
 
