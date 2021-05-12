@@ -1,5 +1,6 @@
 import{useState,useEffect} from 'react'
 import axios from 'axios'
+import EachMovie from './EachMovie'
 
 
 
@@ -15,26 +16,40 @@ export default function RenderMovies(){
         })
         
         promisse.catch((answerError)=>{
-            console.log(answerError)
+            console.log('Este foi o erro :' +answerError)
             alert('houve um erro na captação dos filmes')
         })
     },[])
 
-    const [border,setBorder] = useState(false)
-
-       function toggleBorder(){
-        border ? setBorder(false) : setBorder(true)
-       }
     
+
+       /*function toggleBorder(){
+        border ? setBorder(false) : setBorder(true)
+       }*/
+    
+       /* return(
+            
+            <ul className='movies'>
+                {movies.map((movie)=>(
+                    
+                    <li className={`movie ${border ? 'border' : ''}`} onClick={toggleBorder}key={movie.id}>
+                        <img src={movie.posterURL}/>
+                    </li>
+                    
+                ))}
+            </ul>
+    
+        )*/
+
         return(
-            movies.map((movie)=>{
-                return(
-                <li className={`movie ${border ? 'border' : ''}`} onClick={toggleBorder}key={movie.id}>
-                    <img src={movie.posterURL}/>
-                </li>
-                )
-            })
-         
+            
+            <ul className='movies'>
+            {movies.map((movie)=>(
+                    
+                    <EachMovie poster={movie.posterURL} id={movie.id}/>
+                    
+                ))}
+            </ul>
     
         )
     

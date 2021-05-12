@@ -17,8 +17,8 @@ export default function App(){
                     <Menu />
                 </Route>
 
-                <Route>
-                    <Sessions path='/sessions' exact/>
+                <Route path='/sessions/:idSession'>
+                    <Sessions />
                 </Route>
             </Switch>
         </BrowserRouter>

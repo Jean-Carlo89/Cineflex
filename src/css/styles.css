@@ -72,7 +72,7 @@
 }
 .container .sessions{
     width: 100%;
-    border: 2px solid red;
+    /*border: 2px solid red;*/
     margin-left: 0px;
     height: 200px;
     min-height: 560px;
@@ -80,13 +80,13 @@
 }
 
 .session{
-    width: 240px;
+    width: 300px;
     height: 100px;
-    border: 1px solid  blue;
+    /*border: 1px solid  blue;*/
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-bottom: 15px
+    margin-bottom: 25px
 }
 
 .session button{
@@ -95,6 +95,10 @@
     border-radius: 3px;
     background-color: #E8833A;
     font-size: 18px;
+}
+
+.session .horarios .border{
+    /*border: 3px solid red;*/
 }
 
 .session h3{
