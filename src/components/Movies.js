@@ -20,12 +20,16 @@ export default function RenderMovies(){
         })
     },[])
 
-       
+    const [border,setBorder] = useState(false)
+
+       function toggleBorder(){
+        border ? setBorder(false) : setBorder(true)
+       }
     
         return(
             movies.map((movie)=>{
                 return(
-                <li className='movie' key={movie.id}>
+                <li className={`movie ${border ? 'border' : ''}`} onClick={toggleBorder}key={movie.id}>
                     <img src={movie.posterURL}/>
                 </li>
                 )

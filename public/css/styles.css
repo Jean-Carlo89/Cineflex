@@ -48,6 +48,11 @@
     align-items: center;
     border-radius: 3px;
     box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.1);
+   /* border: 1px solid blue;*/
+}
+
+.movie.border{
+    border: 1px solid blue
 }
 
 .movie img{
