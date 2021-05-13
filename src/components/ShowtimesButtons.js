@@ -1,12 +1,16 @@
+import {Link} from 'react-router-dom'
 import {useState} from 'react'
-export default function Showtimes({showtimes}){
+export default function Showtimes({showtimes,id}){
+    
     const [border,setBorder] = useState(false)
     function toggleBorder(){
         border ? setBorder(false) : setBorder(true)
-        
+        //console.log(id)
        }
     
        return(
-        <button className={`${border ? 'border' : ''}`} onClick={toggleBorder}>{showtimes}</button> 
+        <Link to={`/seats/${id}`}>
+            <button className={`${border ? 'border' : ''}`} onClick={toggleBorder} key={id}>{showtimes}</button> 
+        </Link>
     )
 }

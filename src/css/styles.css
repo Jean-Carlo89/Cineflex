@@ -97,9 +97,9 @@
     font-size: 18px;
 }
 
-/*.session .horarios .border{
-    /*border: 3px solid red;
-}*/
+.session .horarios .border{
+    border: 3px solid red;
+}
 
 .session h3{
     font-weight: 400;
@@ -111,11 +111,11 @@
     width: 100%;
     height: 117px;
     /*border: 1px solid yellow;*/
-    display: inline-flex;
+    display: flex;
     align-items: center;
 }
 
-.movie-info span{
+.movie-info .text{
     margin-left: 10px;
     font-size: 26px;
 }
@@ -123,6 +123,7 @@
 .movie.mini{
     height: 89px;
     width: 64px;
+    min-width: 64px;
     margin: 14px 0 14px 10px;
     
 }
@@ -140,20 +141,28 @@
 .seats.disponibility{
     display: flex;
     justify-content: space-around;
+    height: auto;
 }
 
-.seats.disponibility p{
+/*.seats.disponibility p{
     font-size: 11px;
     display: inline;
     margin-top: 45px;
-} 
+} */
+
+.disponibility .anchor{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 11px;
+}
 
 .seats{
     width: 276px;
     height: 220px;
      background-color: coral;
      display: flex;
-     justify-content: space-between;
+     justify-content: space-evenly;
      flex-wrap: wrap;
 }
 
@@ -189,4 +198,22 @@
 .selected{
     background-color: #8DD7CF;
     ;
+}
+
+.user-info{
+    width: 95%;
+    font-size: 18px;
+    margin-top: 41px;
+}
+
+.user-info input{
+    width: 90%;
+    height: 51px;
+    margin-bottom: 20px;
+    margin-top:5px;
+
+}
+.user-info ::placeholder{
+    font-style: italic;
+    font-size: 18px;
 }
