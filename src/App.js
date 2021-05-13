@@ -5,10 +5,12 @@ import Menu from './components/Menu'
 import Sessions from './components/Sessions'
 import Seats from './components/Seats'
 import {useState} from 'react'
+import Success from './components/Success'
 
 export default function App(){
     const [movieTitle,setMovieTitle] = useState('')
     const[chosenSeats,setChosenSeats]=useState([])
+    const[seatNumber,setSeatNumber] = useState([])
     const[userName,setUserName]=useState('')
     const[userCPF,setUserCPF]=useState('')
     const[date,setDate] = useState('')
@@ -30,7 +32,8 @@ export default function App(){
                 </Route>
 
                 <Route path='/seats/:idSeat'>
-                    <Seats chosenSeats={chosenSeats} 
+                    <Seats 
+                    chosenSeats={chosenSeats} 
                     setChosenSeats={setChosenSeats} 
                     name={userName}
                     setName={setUserName}
@@ -40,7 +43,26 @@ export default function App(){
                     setDate={setDate}
                     time={time}
                     setTime={setTime}
+                    seatNumber={seatNumber}
+                    setSeatNumber={setSeatNumber}
                     
+                    />
+                </Route>
+
+                <Route path='/success'>
+                    <Success  
+                    
+                    user={userName}
+                    userCPF={userCPF}
+                    date={date}
+                    time={time}
+                    movie={movieTitle}
+                    seats={seatNumber}
+                    setSeatsid={setChosenSeats}
+                    setSeatsNumber={setSeatNumber}
+                    seatId={chosenSeats}
+
+
                     />
                 </Route>
             </Switch>

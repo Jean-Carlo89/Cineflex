@@ -5,7 +5,7 @@ import {useParams} from 'react-router-dom'
 import Showtimes from './ShowtimesButtons'
 
 
-export default function Sessions(){
+export default function Sessions({movieTitle,setMovieTitle}){
     const {idSession} = useParams()
     
     console.log('Este é o idSession :')
@@ -23,6 +23,8 @@ export default function Sessions(){
             //console.log(answer.data)
             setMovie(answer.data)
             setDays(answer.data.days)
+            
+            setMovieTitle(answer.data.title)
             
         })
         

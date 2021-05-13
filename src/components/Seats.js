@@ -6,7 +6,7 @@ import  {useState,useEffect} from 'react'
 import {Link} from 'react-router-dom'
 export default function Seats(props){
     
-    const {chosenSeats,setChosenSeats,name,setName,data,setData,date,setDate,time,setTime}=props
+    const {chosenSeats,setChosenSeats,name,setName,data,setData,date,setDate,time,setTime,seatNumber,setSeatNumber}=props
     const {idSeat}=useParams()
     const [user,setUser] = useState('')
     const [cpf,setCPF] = useState('')
@@ -20,6 +20,8 @@ export default function Seats(props){
     const [movies,setMovies] = useState([])
 
     useEffect(()=>{
+       // setSeats([])
+        //setSeatNumber([])
         const promisse = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/showtimes/${idSeat}/seats`)
 
         promisse.then((answer)=>{
@@ -73,6 +75,7 @@ export default function Seats(props){
                         id={seat.id}
                         seats={chosenSeats}
                         setSeats={setChosenSeats}
+                        
                         />
 
                     ))}
@@ -116,6 +119,8 @@ export default function Seats(props){
                 id={seat.id}
                 seats={chosenSeats}
                 setSeats={setChosenSeats}
+                seatN={seatNumber}
+                setSeatNumber={setSeatNumber}
                 />
 
                 ))}
@@ -146,8 +151,8 @@ export default function Seats(props){
                     </div>
                 </ul>
 
-                <button onClick={()=>(console.log(chosenSeats))}>teste estado do seat</button>
-
+                <button onClick={()=>(console.log(chosenSeats))}>teste estado do id do seat</button>
+                <button onClick={()=>(console.log(seatNumber))}>teste estado do numero do assento</button>
                 <div className='user-info'>
                     <h4>Nome do comprador:</h4>
                     <input placeholder='Digite o seu nome...' onChange={(e)=>(saveUserName(e))} value={user}/>
@@ -159,8 +164,10 @@ export default function Seats(props){
                 </div>
 
                 <button onClick={test}>ver objeto final</button>
-                <button className='sendRequest' onClick={finish}>Reservar assento(s)</button>
                 
+                <Link to={'/success'}>
+                    <button className='sendRequest' onClick={finish}>Reservar assento(s)</button>
+                </Link>
                 
                 
                 <div className='movie-info'>

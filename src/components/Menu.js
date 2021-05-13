@@ -8,6 +8,10 @@ export default function Menu(){
         <Link to={'/seats'}>
             <button>to seats</button>
         </Link>
+
+        <Link to={'/success'}>
+            <button>to success</button>
+        </Link>
     
     <div className='container'>
         <h2>Selecione o filme</h2>

@@ -1,8 +1,8 @@
 import  {useState} from 'react'
-export default function EachSeat({availability,seatNumber,id,seats,setSeats}){
+export default function EachSeat({availability,seatNumber,id,seats,setSeats,seatN,setSeatNumber}){
 const [border,setBorder] = useState(false)
     
-    function selectSeat(id){
+    function selectSeat(id,number){
         
         
         
@@ -17,9 +17,12 @@ const [border,setBorder] = useState(false)
         if(border){
            console.log('entrou aqui')
             const newArray = seats.filter((item)=>(item!==id))
+            const newArraySeats = seatN.filter((item)=>(item!==number))
             console.log(newArray)
             border ? setBorder(false) : setBorder(true)
             setSeats(newArray)
+            setSeatNumber(newArraySeats)
+            
             return
         }
        
@@ -28,6 +31,7 @@ const [border,setBorder] = useState(false)
 
         //console.log(id)
         setSeats([...seats,id])
+        setSeatNumber([...seatN,number])
        }
 
       
@@ -36,7 +40,7 @@ const [border,setBorder] = useState(false)
     return(
         
        
-            <li className={`seat ${availability ? 'disponible' : 'not-disponible'} ${border ? 'selected' : ''}`} onClick={()=>selectSeat(id)} key={id}>
+            <li className={`seat ${availability ? 'disponible' : 'not-disponible'} ${border ? 'selected' : ''}`} onClick={()=>selectSeat(id,seatNumber)} key={id}>
                     {seatNumber}
             </li>
            

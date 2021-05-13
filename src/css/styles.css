@@ -18,7 +18,7 @@
 
 .container{
     width: 100%;
-    background-color: blueviolet;
+    /*background-color: blueviolet;*/
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -162,7 +162,7 @@
 .seats{
     width: 276px;
     height: 220px;
-     background-color: coral;
+     /*background-color: coral;*/
      display: flex;
      justify-content: space-evenly;
      flex-wrap: wrap;
@@ -221,7 +221,7 @@
 }
 
 
-.sendRequest{
+.sendRequest,.return{
     background-color: #E8833A;
     width: 225px;
     height: 45px;
@@ -234,4 +234,51 @@
     font-size: 18px;
     margin-top: 57px;
     margin-bottom: 30px;
+}
+
+/*----------------------------------Success-------------------------------*/
+
+.container .finish-message{
+    font-size: 24px;
+    width: 190px;
+    height: 110px;
+    color: #247A6B;
+    /*border: 1px solid red;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.success-info{
+    /*border: 1px solid green;*/
+    width: 90%;
+}
+
+.info-movie, .info-seats{
+    height: 110px ;
+    /*border: 1px solid coral;*/
+}
+
+.info-seats{
+    height: auto;
+}
+
+.info-movie p, .info-seats li{
+    font-size: 22px;
+}
+.info-movie h3, .info-seats h3{
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.info-movie.last h3{
+    font-size: 24px;
+    margin-bottom: 5px;
+    margin-top: 15px;
+}
+
+.return{
+    margin: 40px auto 100px auto;
+    
 }
