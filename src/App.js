@@ -8,6 +8,11 @@ import {useState} from 'react'
 
 export default function App(){
     const [movieTitle,setMovieTitle] = useState('')
+    const[chosenSeats,setChosenSeats]=useState([])
+    const[userName,setUserName]=useState('')
+    const[userCPF,setUserCPF]=useState('')
+    const[date,setDate] = useState('')
+    const[time,setTime] = useState('')
     return(
     <>
         
@@ -25,7 +30,18 @@ export default function App(){
                 </Route>
 
                 <Route path='/seats/:idSeat'>
-                    <Seats />
+                    <Seats chosenSeats={chosenSeats} 
+                    setChosenSeats={setChosenSeats} 
+                    name={userName}
+                    setName={setUserName}
+                    data={userCPF}
+                    setData={setUserCPF}
+                    date={date}
+                    setDate={setDate}
+                    time={time}
+                    setTime={setTime}
+                    
+                    />
                 </Route>
             </Switch>
         </BrowserRouter>

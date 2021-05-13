@@ -72,7 +72,7 @@ export default function Sessions(){
                 <div className='movie mini'>
                     <img src={movie.posterURL}/> 
                 </div> 
-                <span>{movie.title}</span>
+                <div className='text'>{movie.title}</div>
 
             </div>
 

@@ -113,6 +113,8 @@
     /*border: 1px solid yellow;*/
     display: flex;
     align-items: center;
+    background: #DFE6ED;
+
 }
 
 .movie-info .text{
@@ -216,4 +218,20 @@
 .user-info ::placeholder{
     font-style: italic;
     font-size: 18px;
+}
+
+
+.sendRequest{
+    background-color: #E8833A;
+    width: 225px;
+    height: 45px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    letter-spacing: 0,04em;
+    font-size: 18px;
+    margin-top: 57px;
+    margin-bottom: 30px;
 }

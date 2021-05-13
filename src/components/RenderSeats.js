@@ -1,4 +1,4 @@
-import axios from 'axios'
+/*import axios from 'axios'
 import  {useState,useEffect} from 'react'
 import EachSeat from './EachSeat'
 export default function RenderSeats({idSeat}){
@@ -38,3 +38,4 @@ const [seats,setSeats] = useState([])
     )
 }
 
+*/

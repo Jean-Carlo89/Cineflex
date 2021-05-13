@@ -1,14 +1,18 @@
 import {useParams} from 'react-router-dom'
-import RenderSeats from './RenderSeats'
+
 import EachSeat from './EachSeat'
 import axios from 'axios'
 import  {useState,useEffect} from 'react'
 import {Link} from 'react-router-dom'
-export default function Seats(){
-    const {idSeat}=useParams()
+export default function Seats(props){
     
-    console.log('Este é o idSeat')
-    console.log(idSeat)
+    const {chosenSeats,setChosenSeats,name,setName,data,setData,date,setDate,time,setTime}=props
+    const {idSeat}=useParams()
+    const [user,setUser] = useState('')
+    const [cpf,setCPF] = useState('')
+    
+   // console.log('Este é o idSeat')
+    //console.log(idSeat)
     
     
     
@@ -19,27 +23,28 @@ export default function Seats(){
         const promisse = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/showtimes/${idSeat}/seats`)
 
         promisse.then((answer)=>{
-            console.log('Este é o answer.data')
+          // console.log('Este é o answer.data')
             console.log(answer.data)
-            console.log('abaixo o consolelog do anser.data.seats')
-           console.log(answer.data.seats)
+           // console.log('abaixo o consolelog do anser.data.seats')
+          // console.log(answer.data.seats)
             setSeats(answer.data.seats)
             setMovies(answer.data)
-            
+            setDate(answer.data.day.date)
+            setTime(answer.data.name)
             
         })
 
         promisse.catch((answerError)=>{
-            console.log(answerError)
+            console.log(answerError.response)
             alert('houve um erro ao pegar os assentos')
         })
     },[])
 
-    console.log('array dos seats')
-    console.log(seats)
+    //console.log('array dos seats')
+   // console.log(seats)
 
-    console.log('array do filme')
-    console.log(movies)
+   // console.log('array do filme')
+   // console.log(movies)
        
     /*return(
         
@@ -63,7 +68,12 @@ export default function Seats(){
                     {seats.map((seat)=>(
                     
 
-                        <EachSeat availability={seat.isAvailable} seatNumber={seat.name} id={seat.id}/>
+                        <EachSeat availability={seat.isAvailable} 
+                        seatNumber={seat.name} 
+                        id={seat.id}
+                        seats={chosenSeats}
+                        setSeats={setChosenSeats}
+                        />
 
                     ))}
 
@@ -101,7 +111,12 @@ export default function Seats(){
                 {seats.map((seat)=>(
                 
 
-                    <EachSeat availability={seat.isAvailable} seatNumber={seat.name} id={seat.id}/>
+                <EachSeat availability={seat.isAvailable} 
+                seatNumber={seat.name} 
+                id={seat.id}
+                seats={chosenSeats}
+                setSeats={setChosenSeats}
+                />
 
                 ))}
 
@@ -131,14 +146,23 @@ export default function Seats(){
                     </div>
                 </ul>
 
-                <div className='user-info'>
-                    <h4>Nome do comprador</h4>
-                    <input placeholder='Digite o seu nome...' />
+                <button onClick={()=>(console.log(chosenSeats))}>teste estado do seat</button>
 
-                    <h4>CPF do comprador</h4>
-                    <input placeholder='Digite o seu cpf..' />
+                <div className='user-info'>
+                    <h4>Nome do comprador:</h4>
+                    <input placeholder='Digite o seu nome...' onChange={(e)=>(saveUserName(e))} value={user}/>
+                        <button onClick={()=>(console.log(name))}>name value</button>
+                    
+                    <h4>CPF do comprador:</h4>
+                    <input placeholder='Digite o seu cpf..' onChange={(e)=>(saveCPF(e))} value={cpf}/>
+                    <button onClick={()=>(console.log(data))}>name value</button>
                 </div>
 
+                <button onClick={test}>ver objeto final</button>
+                <button className='sendRequest' onClick={finish}>Reservar assento(s)</button>
+                
+                
+                
                 <div className='movie-info'>
                     <div className='movie mini'>
                         <img src={movies.movie.posterURL}/> 
@@ -149,9 +173,57 @@ export default function Seats(){
                         </div>
                 </div>
                 
+                
+                
 
             </div>
     )
+    }
+
+    function saveUserName(e){
+        setName(e.target.value)
+        setUser(e.target.value)
+    }
+
+    function saveCPF(e){
+        setData(e.target.value)
+        setCPF(e.target.value)
+    }
+
+    
+    function test(){
+       
+        setUser('')
+        setCPF('')
+        const finalObject = {ids:chosenSeats,
+            name:name,
+            cpf:data}
+
+console.log(finalObject)
+
+console.log(date)
+console.log(time)
+    }
+    
+    function finish(){
+        
+
+        const finalObject = {ids:chosenSeats,
+            name:name,
+            cpf:data}
+
+        const promisse = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/seats/book-many',finalObject)
+        
+        promisse.then((postSuccess)=>{
+            console.log('Deu certo')
+            console.log(postSuccess.data)
+        })
+
+        promisse.catch((postError)=>{
+            console.log('Deu ruim')
+            console.log(postError.response.data)
+        })
+
     }
 
 }
