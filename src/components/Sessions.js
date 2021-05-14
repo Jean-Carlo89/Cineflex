@@ -8,9 +8,6 @@ import Showtimes from './ShowtimesButtons'
 export default function Sessions({movieTitle,setMovieTitle}){
     const {idSession} = useParams()
     
-    console.log('Este é o idSession :')
-    
-    console.log(idSession)
     
     const [movie,setMovie] = useState({})
     
@@ -20,7 +17,7 @@ export default function Sessions({movieTitle,setMovieTitle}){
         const promisse=axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/movies/${idSession}/showtimes`)
 
         promisse.then((answer)=>{
-            //console.log(answer.data)
+            
             setMovie(answer.data)
             setDays(answer.data.days)
             
@@ -35,9 +32,7 @@ export default function Sessions({movieTitle,setMovieTitle}){
     
     },[])
 
-    //console.log(movie)
-    //console.log(movie.days)
-    //console.log(days)
+    
 
     
     

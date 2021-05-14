@@ -15,10 +15,10 @@ const [border,setBorder] = useState(false)
        
         
         if(border){
-           console.log('entrou aqui')
+           
             const newArray = seats.filter((item)=>(item!==id))
             const newArraySeats = seatN.filter((item)=>(item!==number))
-            console.log(newArray)
+           
             border ? setBorder(false) : setBorder(true)
             setSeats(newArray)
             setSeatNumber(newArraySeats)
@@ -26,16 +26,16 @@ const [border,setBorder] = useState(false)
             return
         }
        
-       // console.log(seats)
+       
         border ? setBorder(false) : setBorder(true)
 
-        //console.log(id)
+        
         setSeats([...seats,id])
         setSeatNumber([...seatN,number])
        }
 
       
-        //console.log(seats)
+        
        
     return(
         

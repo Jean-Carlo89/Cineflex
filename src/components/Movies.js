@@ -10,7 +10,7 @@ export default function RenderMovies(){
         const promisse = axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/movies')
 
         promisse.then((answer)=>{
-            console.log(answer.data)
+            
             setMovies(answer.data)
             
         })
@@ -23,23 +23,7 @@ export default function RenderMovies(){
 
     
 
-       /*function toggleBorder(){
-        border ? setBorder(false) : setBorder(true)
-       }*/
-    
-       /* return(
-            
-            <ul className='movies'>
-                {movies.map((movie)=>(
-                    
-                    <li className={`movie ${border ? 'border' : ''}`} onClick={toggleBorder}key={movie.id}>
-                        <img src={movie.posterURL}/>
-                    </li>
-                    
-                ))}
-            </ul>
-    
-        )*/
+      
 
         return(
             

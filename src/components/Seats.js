@@ -11,8 +11,7 @@ export default function Seats(props){
     const [user,setUser] = useState('')
     const [cpf,setCPF] = useState('')
     
-   // console.log('Este é o idSeat')
-    //console.log(idSeat)
+   
     
     
     
@@ -20,15 +19,11 @@ export default function Seats(props){
     const [movies,setMovies] = useState([])
 
     useEffect(()=>{
-       // setSeats([])
-        //setSeatNumber([])
+      
         const promisse = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/showtimes/${idSeat}/seats`)
 
         promisse.then((answer)=>{
-          // console.log('Este é o answer.data')
-            console.log(answer.data)
-           // console.log('abaixo o consolelog do anser.data.seats')
-          // console.log(answer.data.seats)
+          
             setSeats(answer.data.seats)
             setMovies(answer.data)
             setDate(answer.data.day.date)
@@ -37,27 +32,12 @@ export default function Seats(props){
         })
 
         promisse.catch((answerError)=>{
-            console.log(answerError.response)
+           
             alert('houve um erro ao pegar os assentos')
         })
     },[])
 
-    //console.log('array dos seats')
-   // console.log(seats)
-
-   // console.log('array do filme')
-   // console.log(movies)
-       
-    /*return(
-        
-        seats.map((seat)=>(
-            
-
-                <EachSeat availability={seat.isAvailable} seatNumber={seat.name} id={seat.id}/>
-
-        ))
-        
-    )*/
+    
 
     if(movies.length===0){
     
@@ -151,19 +131,18 @@ export default function Seats(props){
                     </div>
                 </ul>
 
-                <button onClick={()=>(console.log(chosenSeats))}>teste estado do id do seat</button>
-                <button onClick={()=>(console.log(seatNumber))}>teste estado do numero do assento</button>
+               
                 <div className='user-info'>
                     <h4>Nome do comprador:</h4>
                     <input placeholder='Digite o seu nome...' onChange={(e)=>(saveUserName(e))} value={user}/>
-                        <button onClick={()=>(console.log(name))}>name value</button>
+                       
                     
                     <h4>CPF do comprador:</h4>
                     <input placeholder='Digite o seu cpf..' onChange={(e)=>(saveCPF(e))} value={cpf}/>
-                    <button onClick={()=>(console.log(data))}>name value</button>
+                    
                 </div>
 
-                <button onClick={test}>ver objeto final</button>
+               
                 
                 <Link to={'/success'}>
                     <button className='sendRequest' onClick={finish}>Reservar assento(s)</button>
@@ -206,10 +185,7 @@ export default function Seats(props){
             name:name,
             cpf:data}
 
-console.log(finalObject)
 
-console.log(date)
-console.log(time)
     }
     
     function finish(){
@@ -222,12 +198,12 @@ console.log(time)
         const promisse = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/seats/book-many',finalObject)
         
         promisse.then((postSuccess)=>{
-            console.log('Deu certo')
+           
             console.log(postSuccess.data)
         })
 
         promisse.catch((postError)=>{
-            console.log('Deu ruim')
+           
             console.log(postError.response.data)
         })
 
@@ -237,30 +213,3 @@ console.log(time)
 
 
 
-/*
-
-
-*/ 
-
-/*<li className='seat'>
-                    1
-               </li>
-
-               <li className='seat'>
-                    2
-               </li>*/
-
-
-               /*
-            <div className='movie-info'>
-                <div className='movie mini'>
-                    <img src={movie.posterURL}/> 
-                </div> 
-                <span>{movie.title}</span>
-                <span>{movie.title}</span>
-
-
-                <Link to='/'>
-        <button>to menu</button>
-        </Link>
-            </div>*/

@@ -27,7 +27,7 @@ export default function Success(props){
                 <div className='info-movie last'>
                         <h3>Comprador</h3>
                         <p>Nome: {user}</p>
-                        <p>CPF:{userCPF}</p>
+                        <p>CPF: {userCPF}</p>
 
                 </div>
 
@@ -44,11 +44,6 @@ export default function Success(props){
         setSeatsNumber(empty)
         setSeatsid(empty)
     
-    console.log('array dos assentos')
-    console.log(seats)
     
-    
-    console.log('array dos ids')
-    console.log(seatId)
 }
 }

@@ -6,7 +6,7 @@ export default function EachMovie({poster,id}){
     const [border,setBorder] = useState(false)
     function toggleBorder(){
         border ? setBorder(false) : setBorder(true)
-        console.log(id)
+        
        }
 
       
